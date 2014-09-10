@@ -1,0 +1,627 @@
+/*
+ * # Semantic - flipbox
+ * http://github.com/jlukic/semantic-ui/
+ *
+ *
+ * Copyright 2013 Contributors
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+/*******************************
+            flipbox
+*******************************/
+.ui.flipbox {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  -webkit-transition: border-radius 0.1s ease, width 0.2s ease;
+  -moz-transition: border-radius 0.1s ease, width 0.2s ease;
+  -o-transition: border-radius 0.1s ease, width 0.2s ease;
+  -ms-transition: border-radius 0.1s ease, width 0.2s ease;
+  transition: border-radius 0.1s ease, width 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  -moz-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}
+
+/*******************************
+            Content
+*******************************/
+/*--------------
+     Menu
+---------------*/
+.ui.flipbox .choices {
+  cursor: auto;
+  position: absolute;
+  display: none;
+  top: 100%;
+  margin: 0em;
+  background-color: #FFFFFF;
+  min-width: 100%;
+  white-space: nowrap;
+  font-size: 0.875em;
+  text-shadow: none;
+  -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+  -moz-border-radius: 0px 0px 0.325em 0.325em;
+  -webkit-border-radius: 0px 0px 0.325em 0.325em;
+  border-radius: 0px 0px 0.325em 0.325em;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -o-transition: opacity 0.2s ease;
+  -ms-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  z-index: 11;
+}
+
+/*--------------
+      Text
+---------------*/
+.ui.flipbox > .text {
+  display: inline-block;
+  -webkit-transition: color 0.2s ease;
+  -moz-transition: color 0.2s ease;
+  -o-transition: color 0.2s ease;
+  -ms-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+/* Flyout Direction */
+.ui.flipbox .menu {
+  left: 0px;
+}
+
+/*--------------
+    Sub Menu
+---------------*/
+.ui.flipbox .menu .menu {
+  top: 0% !important;
+  left: 100% !important;
+  margin: 0em !important;
+  border-radius: 0 0.325em 0.325em 0em !important;
+}
+
+.ui.flipbox .menu .menu:after {
+  display: none;
+}
+
+.ui.flipbox .menu .item {
+  cursor: pointer;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  height: auto;
+  font-size: 0.875em;
+  display: block;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 0.85em 1em !important;
+  font-size: 0.875rem;
+  text-transform: none;
+  font-weight: normal;
+  text-align: left;
+  -webkit-touch-callout: none;
+}
+
+.ui.flipbox .menu .item:before {
+  display: none;
+}
+
+.ui.flipbox .menu .item .icon {
+  margin-right: 0.75em;
+}
+
+.ui.flipbox .menu .item:first-child {
+  border-top: none;
+}
+
+/*******************************
+            Coupling
+*******************************/
+/* Opposite on last menu on right */
+.ui.menu .right.menu .flipbox:last-child .menu,
+.ui.buttons > .ui.flipbox:last-child .menu {
+  left: auto;
+  right: 0px;
+}
+
+.ui.vertical.menu .flipbox.item > .flipbox.icon:before {
+  content: "\f0da";
+}
+
+.ui.flipbox.icon.button > .flipbox.icon {
+  margin: 0em;
+}
+
+/*******************************
+            States
+*******************************/
+/* flipbox Visible */
+.ui.visible.flipbox > .menu {
+  display: block;
+}
+
+/*--------------------
+        Hover
+----------------------*/
+/* Menu Item Hover */
+.ui.flipbox .menu .item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  z-index: 12;
+}
+
+/*--------------------
+        Selected
+----------------------*/
+/* Menu Item Selected */
+.ui.flipbox .menu .item.selected {
+  background-color: rgba(0, 0, 0, 0.02);
+  z-index: 12;
+}
+
+/*--------------------
+        Active
+----------------------*/
+/* Menu Item Active */
+.ui.flipbox .menu .active.item {
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  border-left: none;
+  border-color: transparent !important;
+  -webkit-box-shadow: none;
+  -moz-shadow: none;
+  box-shadow: none;
+  z-index: 12;
+}
+
+/*--------------------
+     Displayed Text
+----------------------*/
+.ui.flipbox > .displayed.text,
+.ui.displayed.flipbox > .text {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.ui.flipbox:hover > .displayed.text,
+.ui.displayed.flipbox:hover > .text {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/*--------------------
+        Error
+----------------------*/
+.ui.flipbox.error,
+.ui.flipbox.error > .text,
+.ui.flipbox.error > .displayed.text {
+  color: #D95C5C !important;
+}
+
+.ui.selection.flipbox.error {
+  background-color: #FFFAFA;
+  -webkit-box-shadow: 0px 0px 0px 1px #e7bebe !important;
+  box-shadow: 0px 0px 0px 1px #e7bebe !important;
+}
+
+.ui.selection.flipbox.error:hover {
+  -webkit-box-shadow: 0px 0px 0px 1px #e7bebe !important;
+  box-shadow: 0px 0px 0px 1px #e7bebe !important;
+}
+
+.ui.flipbox.error > .menu,
+.ui.flipbox.error > .menu .menu {
+  -webkit-box-shadow: 0px 0px 1px 1px #E7BEBE !important;
+  -moz-box-shadow: 0px 0px 1px 1px #E7BEBE !important;
+  box-shadow: 0px 0px 1px 1px #E7BEBE !important;
+}
+
+.ui.flipbox.error > .menu .item {
+  color: #D95C5C !important;
+}
+
+/* Item Hover */
+.ui.flipbox.error > .menu .item:hover {
+  background-color: #FFF2F2 !important;
+}
+
+/* Item Active */
+.ui.flipbox.error > .menu .active.item {
+  background-color: #FDCFCF !important;
+}
+
+/*******************************
+           Variations
+*******************************/
+/*--------------
+     Simple
+---------------*/
+/* Displays without javascript */
+.ui.simple.flipbox .menu:before,
+.ui.simple.flipbox .menu:after {
+  display: none;
+}
+
+.ui.simple.flipbox .menu {
+  display: block;
+  overflow: hidden;
+  top: -9999px !important;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  -webkit-transition: opacity 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
+  -ms-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+
+.ui.simple.active.flipbox,
+.ui.simple.flipbox:hover {
+  border-bottom-left-radius: 0em !important;
+  border-bottom-right-radius: 0em !important;
+}
+
+.ui.simple.active.flipbox > .menu,
+.ui.simple.flipbox:hover > .menu {
+  overflow: visible;
+  width: auto;
+  height: auto;
+  top: 100% !important;
+  opacity: 1;
+}
+
+.ui.simple.flipbox > .menu .item:active > .menu,
+.ui.simple.flipbox:hover > .menu .item:hover > .menu {
+  overflow: visible;
+  width: auto;
+  height: auto;
+  top: 0% !important;
+  left: 100% !important;
+  opacity: 1;
+}
+
+.ui.simple.disabled.flipbox:hover .menu {
+  display: none;
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+}
+
+/*--------------
+    Selection
+---------------*/
+/* Displays like a select box */
+.ui.selection.flipbox {
+  cursor: pointer;
+  display: inline-block;
+  word-wrap: break-word;
+  white-space: normal;
+  background-color: #FFFFFF;
+  padding: 0.65em 1em;
+  line-height: 1.33;
+  color: rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1) !important;
+  -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1) !important;
+  -webkit-border-radius: 0.3125em !important;
+  -moz-border-radius: 0.3125em !important;
+  border-radius: 0.3125em !important;
+}
+
+.ui.selection.flipbox select {
+  display: none;
+}
+
+.ui.selection.flipbox > .flipbox.icon {
+  opacity: 0.7;
+  margin: 0.2em 0em 0.2em 1.25em;
+  -webkit-transition: opacity 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
+  -ms-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+
+.ui.selection.flipbox,
+.ui.selection.flipbox .menu {
+  -webkit-transition: box-shadow 0.2s ease-out;
+  -moz-transition: box-shadow 0.2s ease-out;
+  -o-transition: box-shadow 0.2s ease-out;
+  -ms-transition: box-shadow 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.ui.selection.flipbox .menu {
+  top: 100%;
+  max-height: 312px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-box-shadow: 0px 1px 0px 1px #E0E0E0;
+  -moz-box-shadow: 0px 1px 0px 1px #E0E0E0;
+  box-shadow: 0px 1px 0px 1px #E0E0E0;
+  -moz-border-radius: 0px 0px 0.325em 0.325em;
+  -webkit-border-radius: 0px 0px 0.325em 0.325em;
+  border-radius: 0px 0px 0.325em 0.325em;
+}
+
+.ui.selection.flipbox .menu:after,
+.ui.selection.flipbox .menu:before {
+  display: none;
+}
+
+.ui.selection.flipbox .menu img {
+  height: 2.5em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
+/*--------------------
+        Error
+----------------------*/
+.ui.selection.flipbox.error,
+.ui.selection.flipbox.error .item {
+  background-color: #FFFAFA;
+  color: #D95C5C;
+}
+
+.ui.selection.flipbox.error {
+  -webkit-box-shadow: 0px 0px 0px 1px #e7bebe !important;
+  box-shadow: 0px 0px 0px 1px #e7bebe !important;
+}
+
+.ui.selection.flipbox.error .menu {
+  -webkit-box-shadow: 0px 1px 0px 1px #E7BEBE;
+  -moz-box-shadow: 0px 1px 0px 1px #E7BEBE;
+  box-shadow: 0px 1px 0px 1px #E7BEBE;
+  -moz-border-radius: 0px 0px 0.325em 0.325em;
+  -webkit-border-radius: 0px 0px 0.325em 0.325em;
+  border-radius: 0px 0px 0.325em 0.325em;
+}
+
+/* Menu Item Active */
+.ui.selection.flipbox.error .menu .active.item {
+  background-color: #FDCFCF !important;
+}
+
+/* Hover */
+.ui.selection.flipbox:hover {
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2) !important;
+  -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+.ui.selection.flipbox:hover .menu {
+  -webkit-box-shadow: 0px 1px 0px 1px #D3D3D3;
+  -moz-box-shadow: 0px 1px 0px 1px #D3D3D3;
+  box-shadow: 0px 1px 0px 1px #D3D3D3;
+}
+
+.ui.selection.flipbox:hover > .flipbox.icon {
+  opacity: 1;
+}
+
+.ui.selection.flipbox.error:hover {
+  -webkit-box-shadow: 0px 0px 0px 1px #e7bebe !important;
+  box-shadow: 0px 0px 0px 1px #e7bebe !important;
+}
+
+.ui.selection.flipbox.error:hover .menu {
+  -webkit-box-shadow: 0px 1px 0px 1px #E7BEBE;
+  -moz-box-shadow: 0px 1px 0px 1px #E7BEBE;
+  box-shadow: 0px 1px 0px 1px #E7BEBE;
+}
+
+.ui.selection.flipbox.error .menu .item:hover {
+  background-color: #FFF2F2;
+}
+
+/* Selected */
+.ui.selection.flipbox.error .menu .item.selected {
+  background-color: #FFF2F2;
+}
+
+/* Visible */
+.ui.visible.selection.flipbox {
+  border-bottom-left-radius: 0em !important;
+  border-bottom-right-radius: 0em !important;
+}
+
+/* Active */
+.ui.active.selection.flipbox {
+  -webkit-border-radius: 0.3125em 0.3125em 0em 0em !important;
+  -moz-border-radius: 0.3125em 0.3125em 0em 0em !important;
+  border-radius: 0.3125em 0.3125em 0em 0em !important;
+}
+
+.ui.active.selection.flipbox > .flipbox.icon {
+  opacity: 1;
+}
+
+/*--------------
+      Fluid
+---------------*/
+.ui.fluid.flipbox {
+  display: block;
+}
+
+.ui.fluid.flipbox > .flipbox.icon {
+  float: right;
+}
+
+/*--------------
+     Inline
+---------------*/
+.ui.inline.flipbox {
+  cursor: pointer;
+  display: inline-block;
+  color: inherit;
+}
+
+.ui.inline.flipbox .flipbox.icon {
+  margin: 0em 0.5em 0em 0.25em;
+}
+
+.ui.inline.flipbox .text {
+  font-weight: bold;
+}
+
+.ui.inline.flipbox .menu {
+  cursor: auto;
+  margin-top: 0.25em;
+  -webkit-border-radius: 0.325em;
+  -moz-border-radius: 0.325em;
+  border-radius: 0.325em;
+}
+
+/*--------------
+    Floating
+---------------*/
+.ui.floating.flipbox .menu {
+  left: 0;
+  right: auto;
+  margin-top: 0.5em !important;
+  -webkit-border-radius: 0.325em;
+  -moz-border-radius: 0.325em;
+  border-radius: 0.325em;
+}
+
+/*--------------
+     Pointing
+---------------*/
+.ui.pointing.flipbox .menu {
+  top: 100%;
+  margin-top: 0.75em;
+  -moz-border-radius: 0.325em;
+  -webkit-border-radius: 0.325em;
+  border-radius: 0.325em;
+}
+
+.ui.pointing.flipbox .menu:after {
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  content: " ";
+  visibility: visible;
+  width: 0.5em;
+  height: 0.5em;
+  -moz-box-shadow: -1px -1px 0px 1px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: -1px -1px 0px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: -1px -1px 0px 1px rgba(0, 0, 0, 0.05);
+  background-image: none;
+  background-color: #FFFFFF;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+  z-index: 12;
+}
+
+.ui.pointing.flipbox .menu .active.item:first-child {
+  background: transparent -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+  background: transparent -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+  background: transparent -o-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+  background: transparent -ms-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+  background: transparent linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+}
+
+/* Directions */
+.ui.pointing.flipbox .menu:after {
+  top: -0.25em;
+  left: 50%;
+  margin: 0em 0em 0em -0.25em;
+}
+
+.ui.top.left.pointing.flipbox .menu {
+  top: 100%;
+  bottom: auto;
+  left: 0%;
+  right: auto;
+  margin: 0.75em 0em 0em;
+}
+
+.ui.top.left.pointing.flipbox .menu:after {
+  top: -0.25em;
+  left: 1.25em;
+  right: auto;
+  margin: 0em;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.ui.top.right.pointing.flipbox .menu {
+  top: 100%;
+  bottom: auto;
+  right: 0%;
+  left: auto;
+  margin: 0.75em 0em 0em;
+}
+
+.ui.top.right.pointing.flipbox .menu:after {
+  top: -0.25em;
+  left: auto;
+  right: 1.25em;
+  margin: 0em;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.ui.left.pointing.flipbox .menu {
+  top: 0%;
+  left: 100%;
+  right: auto;
+  margin: 0em 0em 0em 0.75em;
+}
+
+.ui.left.pointing.flipbox .menu:after {
+  top: 1em;
+  left: -0.25em;
+  margin: 0em 0em 0em 0em;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.ui.right.pointing.flipbox .menu {
+  top: 0%;
+  left: auto;
+  right: 100%;
+  margin: 0em 0.75em 0em 0em;
+}
+
+.ui.right.pointing.flipbox .menu:after {
+  top: 1em;
+  left: auto;
+  right: -0.25em;
+  margin: 0em 0em 0em 0em;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+/*--------------
+     Icon
+---------------*/
+.ui.selection.flipbox:hover > .exchange.icon {
+  opacity: 0.7;
+}
+
+.ui.fluid.flipbox > .exchange.icon {
+  float: right;
+}
+
+.ui.selection.flipbox > .exchange.icon {
+  opacity: 1;
+  margin: 0.2em 0em 0.2em 1.25em;
+  -webkit-transition: opacity 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+
+.ui.flipbox > .exchange.icon {
+  width: auto;
+  margin: 0em 0em 0em 1em;
+}
+
