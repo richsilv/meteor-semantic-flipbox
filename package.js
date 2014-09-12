@@ -7,10 +7,7 @@ Package.describe({
 Package.on_use(function (api) {
  	api.versionsFrom("METEOR@0.9.1");
 	api.use('jquery', 'client');
-	api.imply('jquery', 'client');
 
 	api.add_files('client/flipbox.css', 'client');
 	api.add_files('client/flipbox.js', 'client');
-
-  	// api.export('Pikaday', 'client');
 });
