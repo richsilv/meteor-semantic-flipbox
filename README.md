@@ -11,7 +11,7 @@ Flipbox plugin for Semantic-UI, packaged for Meteor. An alternative to checkbox/
 #####Template
 
 ```html
-    <template name="formTemplate>
+    <template name="formTemplate">
       <div class="ui form">
         <div class="field">
           <label>Emacs or Vim?</label>
