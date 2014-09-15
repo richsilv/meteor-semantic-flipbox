@@ -1,6 +1,6 @@
 Package.describe({
 	summary: "Flipbox plugin for Semantic-UI. An alternative to checkbox/toggle/slider for offering two options.",
-  	version: "1.0.2",
+  	version: "1.0.3",
   	git: "https://github.com/richsilv/meteor-semantic-flipbox.git"
 });
 
