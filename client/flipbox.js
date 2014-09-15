@@ -23,28 +23,122 @@ Flipbox.prototype.init = function() {
 	})
 };
 
+
+Flipbox.prototype.destroy = function() {
+	this.$el.removeData();
+	this.$el.off();	
+};
+
 Flipbox.prototype.updateChoice = function(n, t) {
 	var thisChoice = this.choices[n], self = this;
 	if (thisChoice) {
 		this.currentChoice = n;
-  	this.display.fadeOut(t, function() {
-  		self.display.html(thisChoice).fadeIn(t);
-  	});
-}
-	return this;
+	  	this.display.fadeOut(t, function() {
+	  		self.display.html(thisChoice).fadeIn(t);
+	  	});
+	}
+	return this.currentChoice;
 }
 
 $.fn.flipbox = function() {
-  console.log(this);
+
+	var $allModules = $(this),
+	$window     = $(window),
+	$document   = $(document),
+	$body       = $('body'),
+
+	query           = arguments[0],
+	methodInvoked   = (typeof query == 'string'),
+	queryArguments  = [].slice.call(arguments, 1),
+	moduleNamespace = 'flipbox',
+
+	returnedValue;
+
+	$allModules.each( function() {
+
+		var $module = $(this),
+			element = this,
+			instance = $module.data(moduleNamespace),
+			returnValue;
+
+		module = {
+
+			initialize: function() {
+				console.log("initializing...");
+				return new Flipbox($module);
+			},
+			destroy: function() {
+				return instance && instance.destroy();
+			},
+			invoke: function(query, passedArguments, context) {
+				var object = instance,
+					maxDepth,
+					found = module[query],
+					response;
+
+				passedArguments = passedArguments || queryArguments;
+				context         = element         || context;
+
+				if ( $.isFunction( found ) ) {
+					response = found.apply(context, passedArguments);
+				}
+				else if(found !== undefined) {
+					response = found;
+				}
+				if($.isArray(returnedValue)) {
+					returnedValue.push(response);
+				}
+				else if(returnedValue !== undefined) {
+					returnedValue = [returnedValue, response];
+				}
+				else if(response !== undefined) {
+					returnedValue = response;
+				}
+				return found;
+			},
+			'get choice': function() {
+				return instance ? instance.currentChoice : null;
+			},
+			'set choice': function(arguments) {
+				return instance ? instance.updateChoice(queryArguments[0], queryArguments[1] || 0) : null;
+			}
+		};
+
+		if(methodInvoked) {
+			if(instance === undefined) {
+				module.initialize();
+			}
+			module.invoke(query);
+		}
+		else {
+			if(instance !== undefined) {
+				module.destroy();
+			}
+			module.initialize();
+		}
+
+	});
+
+
+  	return (returnedValue !== undefined)
+    	? returnedValue
+    	: this;
+
+/*
 	if (arguments[0] === 'get choice') {
-		return this.data('flipbox') ? this.data('flipbox').currentChoice : null;
+		return this.each(function() {
+			console.log("Should return", ($(this).data('flipbox') ? $(this).data('flipbox').currentChoice : null))
+			return ($(this).data('flipbox') ? $(this).data('flipbox').currentChoice : null);
+		});
 	}
 	else if (arguments[0] === 'set choice') {
-		return this.data('flipbox') ? this.data('flipbox').updateChoice(arguments[1], arguments[2] || 0) : null;
+		return this.each(function() {
+			return ($(this).data('flipbox') ? $(this).data('flipbox').updateChoice(arguments[1], arguments[2] || 0) : null);
+		});
 	}
-	else {
-    return this.each(function() {
-      new Flipbox(this);
-    });
-  }
+	else if (!arguments[0]) {
+		return this.each(function() {
+			new Flipbox(this);
+		});
+}*/
 };
