@@ -10,6 +10,7 @@ Flipbox plugin for Semantic-UI, packaged for Meteor. An alternative to checkbox/
 
 #####Template
 
+```html
     <template name="formTemplate>
       <div class="ui form">
         <div class="field">
@@ -26,18 +27,23 @@ Flipbox plugin for Semantic-UI, packaged for Meteor. An alternative to checkbox/
         </div>
       </div>
     </template>
-    
+```
+
 #####Initialisation
 
+```js
     Template.formTemplate.rendered = function() {
       $('.ui.flipbox').flipbox();
     }
+```
     
 #####Methods
+
+```js
     $('.ui.flipbox').flipbox('get choice');
     > 0
     $('.ui.flipbox').flipbox('set choice', 1);
     > 1
     $('.ui.flipbox').flipbox('get choice');
     > 1    
-    
+```    
