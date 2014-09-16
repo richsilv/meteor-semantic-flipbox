@@ -36,9 +36,14 @@ Flipbox.prototype.updateChoice = function(n, t) {
 	  	this.display.fadeOut(t, function() {
 	  		self.display.html(thisChoice).fadeIn(t);
 	  	});
+	  	this.settings.onChange(n);
 	}
 	return this.currentChoice;
 }
+
+Flipbox.prototype.settings = {
+  	onChange: function(value) {}
+};
 
 $.fn.flipbox = function() {
 
@@ -64,7 +69,6 @@ $.fn.flipbox = function() {
 		module = {
 
 			initialize: function() {
-				console.log("initializing...");
 				return new Flipbox($module);
 			},
 			destroy: function() {
@@ -115,6 +119,10 @@ $.fn.flipbox = function() {
 				module.destroy();
 			}
 			module.initialize();
+		}
+
+		if ($.isPlainObject(query)) {
+			_.extend(instance.settings, query);
 		}
 
 	});
