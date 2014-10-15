@@ -122,6 +122,9 @@ $.fn.flipbox = function() {
 		}
 
 		if ($.isPlainObject(query)) {
+			if (instance === undefined) {
+				instance = module.initialize();
+			}
 			_.extend(instance.settings, query);
 		}
 
@@ -132,21 +135,4 @@ $.fn.flipbox = function() {
     	? returnedValue
     	: this;
 
-/*
-	if (arguments[0] === 'get choice') {
-		return this.each(function() {
-			console.log("Should return", ($(this).data('flipbox') ? $(this).data('flipbox').currentChoice : null))
-			return ($(this).data('flipbox') ? $(this).data('flipbox').currentChoice : null);
-		});
-	}
-	else if (arguments[0] === 'set choice') {
-		return this.each(function() {
-			return ($(this).data('flipbox') ? $(this).data('flipbox').updateChoice(arguments[1], arguments[2] || 0) : null);
-		});
-	}
-	else if (!arguments[0]) {
-		return this.each(function() {
-			new Flipbox(this);
-		});
-}*/
 };
