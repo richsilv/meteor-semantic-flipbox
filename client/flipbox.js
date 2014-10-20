@@ -9,6 +9,9 @@ function Flipbox(el, opts) {
   this.numChoices = this.choices.length;
   this.opts = opts;
   this.$el.data('flipbox', this);
+  this.settings = {
+  	onChange: function(value) {}
+  };
 
   this.init();
 }
@@ -40,10 +43,6 @@ Flipbox.prototype.updateChoice = function(n, t) {
 	}
 	return this.currentChoice;
 }
-
-Flipbox.prototype.settings = {
-  	onChange: function(value) {}
-};
 
 $.fn.flipbox = function() {
 
