@@ -9,9 +9,6 @@ function Flipbox(el, opts) {
   this.numChoices = this.choices.length;
   this.opts = opts;
   this.$el.data('flipbox', this);
-  this.settings = {
-  	onChange: function(value) {}
-  };
 
   this.init();
 }
@@ -42,7 +39,12 @@ Flipbox.prototype.updateChoice = function(n, t) {
 	  	this.settings.onChange(n);
 	}
 	return this.currentChoice;
-}
+};
+
+Flipbox.prototype.settings = {
+  	onChange: function(value) {}
+ };
+
 
 $.fn.flipbox = function() {
 
@@ -118,13 +120,12 @@ $.fn.flipbox = function() {
 				module.destroy();
 			}
 			module.initialize();
-		}
-
-		if ($.isPlainObject(query)) {
-			if (instance === undefined) {
-				instance = module.initialize();
+			if ($.isPlainObject(query)) {
+				if (instance === undefined) {
+					instance = module.initialize();
+				}
+				_.extend(instance.settings, query);
 			}
-			_.extend(instance.settings, query);
 		}
 
 	});
